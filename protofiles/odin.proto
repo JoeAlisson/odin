@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package odin;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/joealisson/odin/api/grpc/ptypes";
+
+message User {
+  string  uid = 1;
+  string  username = 2;
+  string  ip = 3;
+}
+
+message Changes {
+  string entity = 1;
+  string description = 2;
+  enum Kind {
+    CREATE = 0;
+    UPDATE = 1;
+    DELETE = 2;
+  }
+  Kind kind = 3;
+  map<string, string> values = 4;
+}
+
+message AuditRequest {
+  string system = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  User user = 3;
+  Changes changes = 4;
+}
+
+service Odin {
+  rpc Audit(AuditRequest) returns (google.protobuf.Empty);
+
+}
