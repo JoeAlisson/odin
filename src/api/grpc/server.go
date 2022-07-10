@@ -29,7 +29,8 @@ func NewServer(ingestor ingestion.Ingestor) *server {
 
 func convert(req *ptypes.AuditRequest) *ingestion.AuditLog {
 	return &ingestion.AuditLog{
-		System: req.System,
+		System:    req.System,
+		Timestamp: req.Timestamp.AsTime(),
 		User: ingestion.User{
 			UID:      req.User.Uid,
 			Username: req.User.Username,
