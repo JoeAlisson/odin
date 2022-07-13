@@ -16,9 +16,9 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.18
-        
+
     - name: Dependencies
-      run: go mod tidy 
+      run: go mod tidy
 
     - name: Build
       run: go build -v ./...
@@ -26,14 +26,4 @@ jobs:
     - name: Test
       run: go test -v ./...
 
-    - name: SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v1.1.0
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      with:
-        args: >
-          -Dsonar.projectKey=JoeAlisson_odin
-          -Dsonar.organization=joealisson-github
-      
 
