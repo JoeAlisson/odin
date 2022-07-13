@@ -18,14 +18,14 @@ jobs:
         go-version: 1.18
 
     - name: Build
-      run: go build -v ./src/...
+      run: go build -v ./...
 
     - name: Test
-      run: go test -v ./src/...
-  
+      run: go test -v ./...
+
     - name: SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v1.1.0
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        
+
