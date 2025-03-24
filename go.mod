@@ -1,11 +1,11 @@
 module github.com/joealisson/odin
 
 go 1.21
-toolchain go1.22.9
+toolchain go1.24.1
 
 require (
 	google.golang.org/grpc v1.69.2
-	google.golang.org/protobuf v1.36.4
+	google.golang.org/protobuf v1.36.6
 )
 
 require (
